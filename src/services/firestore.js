@@ -21,7 +21,6 @@ const transformContact = (row) => {
     cardThumbnailUrl: row.card_thumbnail_url,
     notes: row.notes,
     tags: row.tags || [],
-    isFavorite: row.is_favorite,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
     scannedAt: row.scanned_at,
@@ -46,7 +45,6 @@ const transformToDbFormat = (data) => {
   if (data.cardThumbnailUrl !== undefined) result.card_thumbnail_url = data.cardThumbnailUrl;
   if (data.notes !== undefined) result.notes = data.notes;
   if (data.tags !== undefined) result.tags = data.tags;
-  if (data.isFavorite !== undefined) result.is_favorite = data.isFavorite;
 
   return result;
 };
@@ -155,23 +153,6 @@ export const getContactsByTag = async (tag) => {
   }
 };
 
-// Get favorite contacts
-export const getFavoriteContacts = async () => {
-  try {
-    const { data, error } = await supabase
-      .from(CONTACTS_TABLE)
-      .select('*')
-      .eq('is_favorite', true)
-      .order('full_name', { ascending: true });
-
-    if (error) throw error;
-    return (data || []).map(transformContact);
-  } catch (error) {
-    console.error('Error getting favorite contacts:', error);
-    throw error;
-  }
-};
-
 // Update a contact
 export const updateContact = async (contactId, updates) => {
   try {
@@ -207,9 +188,4 @@ export const deleteContact = async (contactId) => {
     console.error('Error deleting contact:', error);
     throw error;
   }
-};
-
-// Toggle favorite status
-export const toggleFavorite = async (contactId, currentStatus) => {
-  return updateContact(contactId, { isFavorite: !currentStatus });
 };

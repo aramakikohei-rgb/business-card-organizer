@@ -137,14 +137,6 @@ export const ContactProvider = ({ children }) => {
     }
   };
 
-  // Toggle favorite
-  const toggleFavorite = async (contactId) => {
-    const contact = state.contacts.find((c) => c.id === contactId);
-    if (contact) {
-      await updateContact(contactId, { isFavorite: !contact.isFavorite });
-    }
-  };
-
   // Set selected contact
   const setSelectedContact = (contact) => {
     dispatch({ type: ACTIONS.SET_SELECTED_CONTACT, payload: contact });
@@ -184,7 +176,6 @@ export const ContactProvider = ({ children }) => {
     addContact,
     updateContact,
     deleteContact,
-    toggleFavorite,
     setSelectedContact,
     setSearchQuery,
     setViewMode,

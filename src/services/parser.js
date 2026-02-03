@@ -201,7 +201,6 @@ export const parseBusinessCard = (ocrText) => {
     socialLinks,
     notes: '',
     tags: [],
-    isFavorite: false,
   };
 };
 
@@ -261,7 +260,6 @@ export const createEmptyContact = () => ({
   },
   notes: '',
   tags: [],
-  isFavorite: false,
 });
 
 export default parseBusinessCard;

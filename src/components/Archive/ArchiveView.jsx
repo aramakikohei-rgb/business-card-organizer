@@ -13,7 +13,6 @@ const ArchiveView = ({
   sortField,
   sortDirection,
   onSortChange,
-  onToggleFavorite,
 }) => {
   return (
     <div className="space-y-6">
@@ -42,9 +41,9 @@ const ArchiveView = ({
           <Loading text="Loading contacts..." />
         </div>
       ) : viewMode === 'grid' ? (
-        <ContactGrid contacts={contacts} onToggleFavorite={onToggleFavorite} />
+        <ContactGrid contacts={contacts} />
       ) : (
-        <ContactList contacts={contacts} onToggleFavorite={onToggleFavorite} />
+        <ContactList contacts={contacts} />
       )}
     </div>
   );

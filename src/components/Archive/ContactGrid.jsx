@@ -1,6 +1,6 @@
 import ContactCard from './ContactCard';
 
-const ContactGrid = ({ contacts, onToggleFavorite }) => {
+const ContactGrid = ({ contacts }) => {
   if (contacts.length === 0) {
     return (
       <div className="text-center py-12">
@@ -33,7 +33,6 @@ const ContactGrid = ({ contacts, onToggleFavorite }) => {
         <ContactCard
           key={contact.id}
           contact={contact}
-          onToggleFavorite={onToggleFavorite}
         />
       ))}
     </div>

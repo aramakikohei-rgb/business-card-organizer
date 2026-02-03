@@ -12,7 +12,7 @@ import { deleteCardImage } from '../services/storage';
 const Contact = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { updateContact, deleteContact, toggleFavorite } = useContacts();
+  const { updateContact, deleteContact } = useContacts();
   const toast = useToast();
 
   const [contact, setContact] = useState(null);
@@ -55,16 +55,6 @@ const Contact = () => {
       toast.error('Failed to update contact');
     } finally {
       setSaving(false);
-    }
-  };
-
-  const handleToggleFavorite = async () => {
-    try {
-      await toggleFavorite(id);
-      setContact((prev) => ({ ...prev, isFavorite: !prev.isFavorite }));
-    } catch (error) {
-      console.error('Error toggling favorite:', error);
-      toast.error('Failed to update favorite status');
     }
   };
 
@@ -148,7 +138,6 @@ const Contact = () => {
         contact={contact}
         onUpdate={handleUpdate}
         onDelete={() => setShowDeleteModal(true)}
-        onToggleFavorite={handleToggleFavorite}
         loading={saving}
       />
 

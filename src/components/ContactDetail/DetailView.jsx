@@ -3,7 +3,7 @@ import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
 import CardPreview from './CardPreview';
 
-const DetailView = ({ contact, onUpdate, onDelete, onToggleFavorite, loading }) => {
+const DetailView = ({ contact, onUpdate, onDelete, loading }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = async (formData) => {
@@ -40,7 +40,6 @@ const DetailView = ({ contact, onUpdate, onDelete, onToggleFavorite, loading }) 
             <ContactInfo
               contact={contact}
               onEdit={() => setIsEditing(true)}
-              onToggleFavorite={onToggleFavorite}
               onDelete={onDelete}
             />
           )}

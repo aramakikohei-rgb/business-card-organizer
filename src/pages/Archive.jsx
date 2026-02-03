@@ -18,7 +18,6 @@ const Archive = () => {
     sortField,
     sortDirection,
     setSort,
-    toggleFavorite,
   } = useContacts();
 
   const toast = useToast();
@@ -205,7 +204,6 @@ const Archive = () => {
         sortField={sortField}
         sortDirection={sortDirection}
         onSortChange={setSort}
-        onToggleFavorite={toggleFavorite}
       />
     </div>
   );
