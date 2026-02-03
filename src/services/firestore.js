@@ -16,7 +16,6 @@ const transformContact = (row) => {
     phones: row.phones || [],
     address: row.address || {},
     website: row.website,
-    socialLinks: row.social_links || {},
     cardImageUrl: row.card_image_url,
     cardThumbnailUrl: row.card_thumbnail_url,
     notes: row.notes,
@@ -40,7 +39,6 @@ const transformToDbFormat = (data) => {
   if (data.phones !== undefined) result.phones = data.phones;
   if (data.address !== undefined) result.address = data.address;
   if (data.website !== undefined) result.website = data.website;
-  if (data.socialLinks !== undefined) result.social_links = data.socialLinks;
   if (data.cardImageUrl !== undefined) result.card_image_url = data.cardImageUrl;
   if (data.cardThumbnailUrl !== undefined) result.card_thumbnail_url = data.cardThumbnailUrl;
   if (data.notes !== undefined) result.notes = data.notes;

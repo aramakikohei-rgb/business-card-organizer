@@ -19,10 +19,6 @@ const ContactForm = ({ initialData, onSubmit, onCancel, loading }) => {
       country: '',
     },
     website: '',
-    socialLinks: {
-      linkedin: '',
-      twitter: '',
-    },
     notes: '',
     tags: [],
   });
@@ -41,7 +37,6 @@ const ContactForm = ({ initialData, onSubmit, onCancel, loading }) => {
           ? initialData.phones
           : [{ type: 'mobile', value: '', isPrimary: true }],
         address: initialData.address || formData.address,
-        socialLinks: initialData.socialLinks || formData.socialLinks,
         tags: initialData.tags || [],
       });
     }
@@ -66,13 +61,6 @@ const ContactForm = ({ initialData, onSubmit, onCancel, loading }) => {
     setFormData((prev) => ({
       ...prev,
       address: { ...prev.address, [field]: value },
-    }));
-  };
-
-  const handleSocialChange = (field, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      socialLinks: { ...prev.socialLinks, [field]: value },
     }));
   };
 
@@ -344,27 +332,6 @@ const ContactForm = ({ initialData, onSubmit, onCancel, loading }) => {
             placeholder="USA"
           />
         </div>
-      </div>
-
-      {/* Social Links */}
-      <div className="space-y-4">
-        <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-          Social Links
-        </h3>
-
-        <Input
-          label="LinkedIn"
-          value={formData.socialLinks.linkedin}
-          onChange={(e) => handleSocialChange('linkedin', e.target.value)}
-          placeholder="https://linkedin.com/in/username"
-        />
-
-        <Input
-          label="Twitter"
-          value={formData.socialLinks.twitter}
-          onChange={(e) => handleSocialChange('twitter', e.target.value)}
-          placeholder="@username"
-        />
       </div>
 
       {/* Notes & Tags */}

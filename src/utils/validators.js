@@ -60,11 +60,6 @@ export const validateContact = (contact) => {
     errors.website = 'Invalid website URL';
   }
 
-  // Social links validation
-  if (contact.socialLinks?.linkedin && !isValidUrl(contact.socialLinks.linkedin)) {
-    errors.linkedin = 'Invalid LinkedIn URL';
-  }
-
   return {
     isValid: Object.keys(errors).length === 0,
     errors,

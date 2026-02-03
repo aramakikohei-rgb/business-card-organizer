@@ -109,8 +109,6 @@ export const exportToCSV = (contacts) => {
     'Postal Code',
     'Country',
     'Website',
-    'LinkedIn',
-    'Twitter',
     'Notes',
     'Tags',
   ];
@@ -148,8 +146,6 @@ export const exportToCSV = (contacts) => {
       contact.address?.postalCode,
       contact.address?.country,
       contact.website,
-      contact.socialLinks?.linkedin,
-      contact.socialLinks?.twitter,
       contact.notes,
       contact.tags?.join('; '),
     ].map(escapeCSV);
@@ -208,8 +204,6 @@ export const exportToExcel = (contacts) => {
     'Postal Code',
     'Country',
     'Website',
-    'LinkedIn',
-    'Twitter',
     'Notes',
     'Tags',
   ];
@@ -238,8 +232,6 @@ export const exportToExcel = (contacts) => {
       contact.address?.postalCode || '',
       contact.address?.country || '',
       contact.website || '',
-      contact.socialLinks?.linkedin || '',
-      contact.socialLinks?.twitter || '',
       contact.notes || '',
       contact.tags?.join('; ') || '',
     ];
@@ -268,8 +260,6 @@ export const exportToExcel = (contacts) => {
     { wch: 10 }, // Postal Code
     { wch: 12 }, // Country
     { wch: 25 }, // Website
-    { wch: 25 }, // LinkedIn
-    { wch: 15 }, // Twitter
     { wch: 30 }, // Notes
     { wch: 20 }, // Tags
   ];

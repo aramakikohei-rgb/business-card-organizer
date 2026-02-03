@@ -3,8 +3,6 @@ const patterns = {
   email: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g,
   phone: /(?:\+?1?[-.\s]?)?\(?[0-9]{2,4}\)?[-.\s]?[0-9]{2,4}[-.\s]?[0-9]{2,4}(?:[-.\s]?[0-9]{1,4})?/g,
   website: /(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9][a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/\S*)?/gi,
-  linkedin: /(?:linkedin\.com\/in\/|linkedin\.com\/company\/)[a-zA-Z0-9-]+/gi,
-  twitter: /@[a-zA-Z0-9_]+/g,
   postalCode: /\b\d{5}(?:-\d{4})?\b|\b[A-Z]\d[A-Z]\s?\d[A-Z]\d\b/g,
 };
 
@@ -80,17 +78,6 @@ const extractWebsites = (text) => {
     })[0] || '';
 };
 
-// Extract social links
-const extractSocialLinks = (text) => {
-  const linkedin = text.match(patterns.linkedin)?.[0] || '';
-  const twitter = text.match(patterns.twitter)?.[0] || '';
-
-  return {
-    linkedin: linkedin ? `https://${linkedin}` : '',
-    twitter: twitter || '',
-  };
-};
-
 // Check if a line might be a job title
 const isLikelyJobTitle = (line) => {
   const upperLine = line.toUpperCase();
@@ -137,7 +124,6 @@ export const parseBusinessCard = (ocrText) => {
   const emails = extractEmails(ocrText);
   const phones = extractPhones(ocrText);
   const website = extractWebsites(ocrText);
-  const socialLinks = extractSocialLinks(ocrText);
 
   // Identify name, title, and company from remaining lines
   let fullName = '';
@@ -198,7 +184,6 @@ export const parseBusinessCard = (ocrText) => {
     phones,
     address,
     website,
-    socialLinks,
     notes: '',
     tags: [],
   };
@@ -254,10 +239,6 @@ export const createEmptyContact = () => ({
     country: '',
   },
   website: '',
-  socialLinks: {
-    linkedin: '',
-    twitter: '',
-  },
   notes: '',
   tags: [],
 });
